@@ -29,11 +29,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const columns = [
-  { field: "id", headerName: "ID", width: 100 },
-  { field: "slot1", headerName: "Slot 1", width: 130, sortable: false },
-  { field: "slot2", headerName: "Slot 2", width: 130, sortable: false },
-  { field: "slot3", headerName: "Slot 3", width: 130, sortable: false },
-  { field: "time", headerName: "Time", width: 130 },
+  { field: "id", headerName: "ID", width: 130 },
+  { field: "slot1", headerName: "Slot 1", width: 160, sortable: false },
+  { field: "slot2", headerName: "Slot 2", width: 160, sortable: false },
+  { field: "slot3", headerName: "Slot 3", width: 160, sortable: false },
+  { field: "time", headerName: "Time", width: 160 },
 ];
 
 // let rows = [];
@@ -51,7 +51,7 @@ export default function DataTable() {
   return (
     <div
       style={{
-        height: 450,
+        height: 400,
         textAlign: "center",
         padding: "20px",
       }}
@@ -60,7 +60,7 @@ export default function DataTable() {
         className={classes.table}
         rows={rows}
         columns={columns}
-        pageSize={8}
+        pageSize={6}
       />
     </div>
   );

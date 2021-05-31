@@ -1,5 +1,7 @@
-import React, { useState,  } from "react";
+import React, { useState } from "react";
 import LoginForm from "./loginForm";
+import "./login.css";
+import { Avatar } from "@material-ui/core";
 
 const Login = () => {
   const [modal, setModal] = useState(false);
@@ -13,12 +15,23 @@ const Login = () => {
   };
 
   return (
-    <div>
-      {user && <p className="page-header-balance">{user}</p>}
-      {(user === "Guest") | !user && (
-        <button type="submit" onClick={() => openModal()}>
+    <div className="login-user">
+      {(user === "Guest") | !user ? (
+        <div className="button-container">
+        <button
+          className={"button"}
+          type="submit"
+          onClick={() => openModal()}
+        >
           Login
         </button>
+        </div>
+      ) : null}
+      {user && (
+        <div className="guest-container">
+          <Avatar src="/broken-image.jpg" />
+          <p>{user}</p>
+        </div>
       )}
       {modal && (
         <div>

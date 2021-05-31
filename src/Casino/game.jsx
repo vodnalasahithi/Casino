@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
-  Box,
   Button,
   DialogContent,
   DialogTitle,
@@ -55,7 +54,6 @@ const Game = ({ show, onClose }) => {
   });
   const balance = localStorage.getItem("balance");
 
-  const user = localStorage.getItem("userName");
 
   const calculateBalance = () => {
     if (
@@ -80,11 +78,11 @@ const Game = ({ show, onClose }) => {
   const handleSubmit = () => {
     localStorage.setItem("balance", balance - 1);
     setSlotValues({
-      id: Math.random(),
+      id: (new Date().getTime()).toString(32),
       slot1: Math.floor(Math.random() * 10),
       slot2: Math.floor(Math.random() * 10),
       slot3: Math.floor(Math.random() * 10),
-      time: "8397478",
+      time: new Date().getTime(),
     });
   };
 
