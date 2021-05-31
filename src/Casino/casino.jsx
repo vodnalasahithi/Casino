@@ -1,7 +1,7 @@
 import { Button } from "@material-ui/core";
 import React, { useState } from "react";
 import Game from "./game";
-import DataTable from "./table";
+import DataTable from "../components/table";
 
 const Casino = () => {
   const [popup, setPopup] = useState(false);
@@ -13,12 +13,17 @@ const Casino = () => {
     setPopup(false);
   };
 
-  
   return (
     <div>
-      <Button type="button" color="primary" onClick={() => openDialog()}>
-        Start a new game
-      </Button>
+      <div className="start-new-game-container">
+        <Button
+          type="button"
+         color="primary"
+          onClick={() => openDialog()}
+        >
+          Start a new game
+        </Button>
+      </div>
       <DataTable />
       {popup && <Game show={popup} onClose={closeDialog} />}
     </div>

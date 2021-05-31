@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { makeStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
-  
   table: {
     textAlign: "center",
   },
@@ -29,24 +29,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const columns = [
-  { field: "id", headerName: "ID", width: 130 },
-  { field: "slot1", headerName: "Slot 1", width: 160, sortable: false },
-  { field: "slot2", headerName: "Slot 2", width: 160, sortable: false },
-  { field: "slot3", headerName: "Slot 3", width: 160, sortable: false },
-  { field: "time", headerName: "Time", width: 160 },
+  { field: "id", headerName: "ID", width: 230 },
+  { field: "slot1", headerName: "Slot 1", width: 230, sortable: false },
+  { field: "slot2", headerName: "Slot 2", width: 230, sortable: false },
+  { field: "slot3", headerName: "Slot 3", width: 230, sortable: false },
+  { field: "time", headerName: "Time", width: 230 },
 ];
 
-// let rows = [];
-
-export default function DataTable() {
+const DataTable = (props) => {
   const classes = useStyles();
-  const [rows, setRows] = useState([]);
-
-  useEffect(() => {
-    if (localStorage.getItem("slotValues") !== null) {
-      setRows(rows => [...rows, JSON.parse(localStorage.getItem("slotValues"))]);
-    }
-  }, [localStorage.getItem("slotValues")]);
 
   return (
     <div
@@ -58,10 +49,16 @@ export default function DataTable() {
     >
       <DataGrid
         className={classes.table}
-        rows={rows}
+        rows={props.rows}
         columns={columns}
         pageSize={6}
       />
     </div>
   );
-}
+};
+
+const mapStateToProps = (state) => {
+  return { rows: state.casino.rows };
+};
+
+export default connect(mapStateToProps, {})(DataTable);

@@ -7,7 +7,9 @@ import {
   IconButton,
   TextField,
 } from "@material-ui/core";
-import DialogComponent from "./dialog";
+import DialogComponent from "../components/dialog";
+import {addRow} from "../redux/action"
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -100,7 +102,7 @@ const Game = ({ show, onClose }) => {
   useEffect(() => {
     if (slotValues.slot1 !== "") {
       calculateBalance();
-      localStorage.setItem("slotValues", JSON.stringify(slotValues));
+      addRow(slotValues)
     }
   }, [slotValues]);
 

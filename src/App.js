@@ -3,16 +3,17 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import logo from "./casino.png";
 import Casino from "./Casino/casino";
-import Login from "./Casino/login";
-import LoginForm from "./Casino/loginForm";
+import Login from "./login/login";
+import LoginForm from "./login/loginForm";
 
 function App() {
   const [modal, setModal] = useState(true);
   const [balance, setBalance] = useState(localStorage.getItem("balance"));
 
+  let bal = localStorage.getItem("balance");
   useEffect(() => {
     setBalance(localStorage.getItem("balance"));
-  }, [localStorage.getItem("balance")]);
+  }, [bal]);
 
   const closeModal = () => {
     setModal(false);

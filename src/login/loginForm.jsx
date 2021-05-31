@@ -7,7 +7,7 @@ import {
   IconButton,
   TextField,
 } from "@material-ui/core";
-import DialogComponent from "./dialog";
+import DialogComponent from "../components/dialog";
 
 const useStyles = makeStyles((theme) => ({
   root: {
